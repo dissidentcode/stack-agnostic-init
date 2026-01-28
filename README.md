@@ -1,3 +1,5 @@
+![Project Template](docs/archive/readme-header-image.jpg)
+
 # Project Template
 
 A Claude Code project template with interactive initialization.
