@@ -10,3 +10,4 @@ Claude will interview you about your project and generate:
 - Stack-specific .gitignore patterns
 - Directory structure tailored to your project type
 - Minimal starter code scaffolding
+- Claude Code tooling (agents, skills, and commands) tailored to your stack
