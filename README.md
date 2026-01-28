@@ -8,8 +8,8 @@ A Claude Code project template with interactive initialization.
 
 1. **Clone this repository**
    ```bash
-   git clone <template-url> my-project-name
-   cd my-project-name
+   git clone https://github.com/dissidentcode/stack-agnostic-init.git your-project-name
+   cd your-project-name
    ```
 
 2. **Remove the template's git history** (optional, for fresh start)
