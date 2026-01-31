@@ -4,7 +4,68 @@ You are initializing a new project. Conduct an interview to understand the proje
 
 ## Interview Process
 
-Ask questions in 4 phases. Use the AskUserQuestion tool for each phase to gather structured responses. Wait for answers before proceeding to the next phase.
+### Phase 0: Getting Started
+
+Before beginning the interview, ask how the user wants to proceed using AskUserQuestion:
+
+```
+question: "How would you like to initialize this project?"
+options:
+  - "Full interview (Recommended)" — Walk through all questions to fully customize setup
+  - "Import a PRD or tech spec" — Provide a document and Claude will extract project details
+  - "Quick start" — Minimal questions, sensible defaults for everything else
+```
+
+#### If "Import a PRD or tech spec" is selected:
+
+1. Ask the user (via AskUserQuestion) whether they want to:
+   - Provide a file path to the PRD/tech spec (e.g., `docs/prd.md`, or any absolute/relative path)
+   - Paste the content directly into the chat
+
+2. Read the provided file (using the Read tool) or accept the pasted content.
+
+3. Analyze the document and extract all possible interview answers:
+   - Project name, description, target users
+   - Project type, language, framework, package manager, database, external services
+   - Any development workflow preferences mentioned (branching, testing, linting, deployment)
+   - Any coding conventions or communication preferences mentioned
+
+4. Present the extracted information to the user for confirmation/correction using AskUserQuestion, grouped into a concise summary. Show what was found and what will be defaulted. Ask them to confirm or override any values.
+
+5. For any fields that couldn't be determined from the PRD, ask those specific questions only (skip the ones that were answered).
+
+6. Proceed to **Post-Interview Actions** with the combined answers.
+
+#### If "Quick start" is selected:
+
+1. Ask only two required questions (via AskUserQuestion):
+   - **Project Name** — What is your project called?
+   - **Primary Language** — What is the primary programming language?
+     - Options: TypeScript, JavaScript, Python, Rust, Go, Java, Other
+
+2. Apply sensible defaults for everything else:
+   - **Description:** "{Project Name} project"
+   - **Target Users:** "Developers"
+   - **Project Type:** infer from language or default to "Web App"
+   - **Framework:** "None"
+   - **Package Manager:** infer from language (npm for JS/TS, pip for Python, cargo for Rust, go mod for Go, maven for Java)
+   - **Database:** "None"
+   - **External Services:** "None yet"
+   - **Branching:** "Feature branches"
+   - **Testing:** "Test after implementation"
+   - **Linting:** language default (eslint for JS/TS, ruff for Python, clippy for Rust, golangci-lint for Go, checkstyle for Java)
+   - **Deployment:** "Not decided yet"
+   - **Communication:** "Concise"
+   - **Code Preferences:** language conventions
+   - **Things to Avoid:** none
+
+3. Proceed directly to **Post-Interview Actions**.
+
+#### If "Full interview" is selected:
+
+Proceed with Phases 1–4 below.
+
+---
 
 ### Phase 1: Project Identity
 
